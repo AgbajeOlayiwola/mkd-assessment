@@ -1,52 +1,66 @@
-import React, { useReducer } from "react";
-import MkdSDK from "./utils/MkdSDK";
+import React, { useReducer } from "react"
+import MkdSDK from "./utils/MkdSDK"
 
-export const AuthContext = React.createContext();
+export const AuthContext = React.createContext()
 
 const initialState = {
   isAuthenticated: false,
   user: null,
   token: null,
   role: null,
-};
+}
 
 const reducer = (state, action) => {
   switch (action.type) {
     case "LOGIN":
-      //TODO
+      console.log(action.payload)
       return {
         ...state,
-      };
+        role: action.payload?.user?.role,
+        isAuthenticated: true,
+        token: action.payload?.user?.token,
+        user: action.payload,
+      }
     case "LOGOUT":
-      localStorage.clear();
+      localStorage.clear()
       return {
         ...state,
         isAuthenticated: false,
         user: null,
-      };
+        token: null,
+        role: null,
+      }
     default:
-      return state;
+      return state
   }
-};
+}
 
-let sdk = new MkdSDK();
+let sdk = new MkdSDK()
 
 export const tokenExpireError = (dispatch, errorMessage) => {
-  const role = localStorage.getItem("role");
+  const role = localStorage.getItem("role")
   if (errorMessage === "TOKEN_EXPIRED") {
     dispatch({
       type: "Logout",
-    });
-    window.location.href = "/" + role + "/login";
+    })
+    window.location.href = "/" + role + "/login"
   }
-};
+}
 
 const AuthProvider = ({ children }) => {
-  const [state, dispatch] = useReducer(reducer, initialState);
+  const [state, dispatch] = useReducer(reducer, initialState)
 
   React.useEffect(() => {
-    //TODO
-  }, []);
+    const checkTokenValidity = async () => {
+      try {
+        const sdk = new MkdSDK()
+        await sdk.check(state.role)
+      } catch (error) {
+        tokenExpireError(dispatch, "TOKEN_EXPIRED")
+      }
+    }
+    checkTokenValidity()
+  }, [dispatch])
 
   return (
     <AuthContext.Provider
@@ -57,7 +71,7 @@ const AuthProvider = ({ children }) => {
     >
       {children}
     </AuthContext.Provider>
-  );
-};
+  )
+}
 
-export default AuthProvider;
+export default AuthProvider

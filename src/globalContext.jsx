@@ -1,11 +1,11 @@
-import React, { useReducer } from "react";
-export const GlobalContext = React.createContext();
+import React, { useReducer } from "react"
+export const GlobalContext = React.createContext()
 
 const initialState = {
   globalMessage: "",
   isOpen: true,
   path: "",
-};
+}
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -13,30 +13,31 @@ const reducer = (state, action) => {
       return {
         ...state,
         globalMessage: action.payload.message,
-      };
+      }
     case "SETPATH":
       return {
         ...state,
         path: action.payload.path,
-      };
+      }
     case "OPEN_SIDEBAR":
       return {
         ...state,
         isOpen: action.payload.isOpen,
-      };
+      }
 
     default:
-      return state;
+      return state
   }
-};
+}
 
 export const showToast = (dispatch, message, timeout = 3000) => {
+  console.log(message)
   dispatch({
     type: "SNACKBAR",
     payload: {
       message,
     },
-  });
+  })
 
   setTimeout(() => {
     dispatch({
@@ -44,12 +45,12 @@ export const showToast = (dispatch, message, timeout = 3000) => {
       payload: {
         message: "",
       },
-    });
-  }, timeout);
-};
+    })
+  }, timeout)
+}
 
 const GlobalProvider = ({ children }) => {
-  const [state, dispatch] = useReducer(reducer, initialState);
+  const [state, dispatch] = useReducer(reducer, initialState)
 
   return (
     <GlobalContext.Provider
@@ -60,7 +61,7 @@ const GlobalProvider = ({ children }) => {
     >
       {children}
     </GlobalContext.Provider>
-  );
-};
+  )
+}
 
-export default GlobalProvider;
+export default GlobalProvider

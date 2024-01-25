@@ -1,8 +1,9 @@
-import React from "react";
-import { GlobalContext } from "../globalContext";
+import React from "react"
+import { GlobalContext } from "../globalContext"
 const SnackBar = () => {
-  const { state, dispatch } = React.useContext(GlobalContext);
-  const show = state.globalMessage.length > 0;
+  const { state, dispatch } = React.useContext(GlobalContext)
+  const show = state.globalMessage.length > 0
+
   return show ? (
     <div
       id="mkd-toast"
@@ -16,7 +17,7 @@ const SnackBar = () => {
           className="bg-white text-gray-400 hover:text-gray-900 rounded-lg focus:ring-2 focus:ring-gray-300 p-1.5 hover:bg-gray-100 inline-flex h-8 w-8 dark:text-gray-500 dark:hover:text-white  dark:hover:bg-gray-700"
           aria-label="Close"
           onClick={() => {
-            dispatch({ type: "SNACKBAR", payload: { message: "" } });
+            dispatch({ type: "SNACKBAR", payload: { message: "" } })
           }}
         >
           <span className="sr-only">Close</span>
@@ -35,7 +36,7 @@ const SnackBar = () => {
         </button>
       </div>
     </div>
-  ) : null;
-};
+  ) : null
+}
 
-export default SnackBar;
+export default SnackBar

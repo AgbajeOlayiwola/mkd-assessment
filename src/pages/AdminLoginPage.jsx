@@ -1,10 +1,11 @@
-import React from "react";
-import { useForm } from "react-hook-form";
-import { yupResolver } from "@hookform/resolvers/yup";
-import * as yup from "yup";
-import MkdSDK from "../utils/MkdSDK";
-import { useNavigate } from "react-router-dom";
-import { AuthContext } from "../authContext";
+import { yupResolver } from "@hookform/resolvers/yup"
+import React, { useContext } from "react"
+import { useForm } from "react-hook-form"
+import { useNavigate } from "react-router-dom"
+import * as yup from "yup"
+import { AuthContext } from "../authContext"
+import { GlobalContext } from "../globalContext"
+import MkdSDK from "../utils/MkdSDK"
 
 const AdminLoginPage = () => {
   const schema = yup
@@ -12,10 +13,12 @@ const AdminLoginPage = () => {
       email: yup.string().email().required(),
       password: yup.string().required(),
     })
-    .required();
+    .required()
 
-  const { dispatch } = React.useContext(AuthContext);
-  const navigate = useNavigate();
+  const { dispatch: authDispatch } = useContext(AuthContext)
+  const { dispatch: globalDispatch } = useContext(GlobalContext)
+
+  const navigate = useNavigate()
   const {
     register,
     handleSubmit,
@@ -23,12 +26,28 @@ const AdminLoginPage = () => {
     formState: { errors },
   } = useForm({
     resolver: yupResolver(schema),
-  });
+  })
 
   const onSubmit = async (data) => {
-    let sdk = new MkdSDK();
-    //TODO
-  };
+    let sdk = new MkdSDK()
+
+    try {
+      const userData = await sdk.login(data.email, data.password)
+      authDispatch({ type: "LOGIN", payload: { user: userData } })
+      globalDispatch({
+        type: "SNACKBAR",
+        payload: { message: "Login successful" },
+      })
+      navigate("/admin/dashboard")
+    } catch (error) {
+      console.error("Login failed:", error)
+      globalDispatch({
+        type: "SNACKBAR",
+        payload: { message: "error?.message" },
+      })
+      setError("email", { type: "manual", message: error?.message })
+    }
+  }
 
   return (
     <div className="w-full max-w-xs mx-auto">
@@ -82,7 +101,7 @@ const AdminLoginPage = () => {
         </div>
       </form>
     </div>
-  );
-};
+  )
+}
 
-export default AdminLoginPage;
+export default AdminLoginPage

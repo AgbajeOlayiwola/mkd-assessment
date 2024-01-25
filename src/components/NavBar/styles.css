@@ -1,0 +1,33 @@
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px 0px;
+}
+.nav h1 {
+  color: #fff;
+  font-family: Inter;
+  font-size: 48px;
+  font-style: normal;
+  font-weight: 900;
+  line-height: 20px; /* 41.667% */
+}
+.logout {
+  display: flex;
+  align-items: center;
+  display: flex;
+  padding: 12px 24px;
+  gap: 10px;
+  border-radius: 40px;
+  background: var(--Text-Color-link, #9bff00);
+  cursor: pointer;
+}
+.logout p {
+  color: var(--Greyscale-900, #050505);
+  font-feature-settings: "salt" on;
+  font-family: Inter;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 100;
+  line-height: 20px; /* 125% */
+}
