@@ -79,44 +79,88 @@ const AdminDashboardPage = () => {
       <div className="w-full h-screen text-gray ">
         <Cover>
           <NavBar />
-          <div className="flex w-1216 h-88 px-0 justify-between items-center gap-433 flex-shrink-0">
+          <div className="flex  h-88 px-0 justify-between items-center gap-433 flex-shrink-0 ">
             <div>
               <h1 className="text-white text-4xl font-inter font-thin leading-48">
                 Today’s leaderboard
               </h1>
             </div>
-            <div className="flex justify-space-between items-center">
+            <div
+              className="flex justify-space-between items-center pl-15  gap-10"
+              style={{
+                padding: "16px 24px",
+                background: "#1D1D1D",
+                borderRadius: "20px",
+              }}
+            >
               <div>
-                <p>30 May 2022</p>
+                <p className="text-Text-Color-text font-Inter text-white text-16 font-normal font-light leading-20">
+                  30 May 2022
+                </p>
               </div>
-              <div className="inline-flex p-2 justify-center items-center gap-2 rounded-lg bg-primary">
-                <p>Submissions OPEN</p>
+              <div
+                className="inline-flex p-2 justify-center items-center gap-2 rounded-lg bg-primary"
+                style={{ background: "#9BFF00", padding: "4px 10px" }}
+              >
+                <p className="text-black font-Inter text-14 font-normal font-hairline leading-normal uppercase">
+                  Submissions OPEN
+                </p>
               </div>
               <div>
-                <p>11:34</p>
+                <p className="text-Text-Color-text font-Inter text-white text-16 font-normal font-light leading-20">
+                  11:34
+                </p>
               </div>
             </div>
           </div>
           <br />
           <div className="flex px-0 justify-between">
-            <div className="flex gap-10">
-              <p className="text-white  font-inter text-16 font-thin leading-normal">
+            <div className="flex gap-2">
+              <p className="text-white font-inter text-16 font-thin leading-normal">
                 #
               </p>
-              <p className="text-white  font-inter text-16 font-thin leading-normal">
+              <p className="text-white font-inter text-16 font-thin leading-normal">
                 Title
               </p>
             </div>
-            <p className="text-white  font-inter text-16 font-thin leading-normal">
-              Author
-            </p>
-            <div className="flex gap-10">
-              <p className="text-white font-inter text-16 font-thin leading-normal">
-                Most Viewd
+            <div
+              style={{
+                width: "40%",
+                display: "flex",
+                justifyContent: "space-between",
+                alignItems: "center",
+              }}
+            >
+              <p className="text-white  font-inter text-16 font-thin leading-normal">
+                Author
               </p>
-              <p className="text-Greyscale-700 font-inter text-16 font-thin leading-normal">
-                /
-              </p>
+              <div className="flex gap-2">
+                <p className="text-white font-inter text-16 font-thin leading-normal">
+                  Most Viewd
+                </p>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                >
+                  <g clip-path="url(#clip0_6698_388)">
+                    <path
+                      d="M8 10L12 14L16 10"
+                      stroke="#696969"
+                      strokeWidth="1.5"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </g>
+                  <defs>
+                    <clipPath id="clip0_6698_388">
+                      <rect width="24" height="24" fill="white" />
+                    </clipPath>
+                  </defs>
+                </svg>
+              </div>
             </div>
           </div>
           <br />

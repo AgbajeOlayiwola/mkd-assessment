@@ -12,15 +12,14 @@
 .tileInner {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  width: 49%;
+  width: 60%;
   gap: 16px;
 }
 .tileSec {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 50%;
+  width: 40%;
 }
 .tileSec div {
   display: flex;
@@ -31,7 +30,6 @@
   color: #fff;
   text-align: right;
   font-feature-settings: "salt" on;
-  font-family: Inter;
   font-size: 16px;
   font-style: normal;
   font-weight: 100;
@@ -39,7 +37,6 @@
 }
 .numP {
   color: #666;
-  font-family: Inter;
   font-size: 14px;
   font-style: normal;
   font-weight: 100;
@@ -47,7 +44,6 @@
 }
 .descH3 {
   color: var(--Text-Color-text, #fff);
-  font-family: Inter;
   font-size: 20px;
   font-style: normal;
   font-weight: 100;
@@ -56,18 +52,18 @@
 .nameP {
   color: var(--Main-Color-secondary, #dbfd51);
   font-feature-settings: "salt" on;
-  font-family: Inter;
   font-size: 16px;
   font-style: normal;
   font-weight: 100;
   line-height: 20px; /* 125% */
 }
 .tilediv1 {
-  width: 10%;
+  width: fit-content;
 }
 .tilediv2 {
-  width: 30%;
+  width: 25%;
   border-radius: 20px;
+  height: 84px;
 }
 .tilediv3 {
   width: 50%;

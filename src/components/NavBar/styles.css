@@ -6,7 +6,6 @@
 }
 .nav h1 {
   color: #fff;
-  font-family: Inter;
   font-size: 48px;
   font-style: normal;
   font-weight: 900;
@@ -25,7 +24,6 @@
 .logout p {
   color: var(--Greyscale-900, #050505);
   font-feature-settings: "salt" on;
-  font-family: Inter;
   font-size: 16px;
   font-style: normal;
   font-weight: 100;

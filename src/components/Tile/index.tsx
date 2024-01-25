@@ -22,7 +22,7 @@ const Tile = ({ id, title, image, username, like, moveTile }) => {
       <div
         className="tile"
         ref={(node) => drag(drop(node))}
-        style={{ border: "1px solid #000", margin: "10px", padding: "10px" }}
+        style={{ margin: "10px", padding: "16px 24px" }}
       >
         <div className="tileInner">
           <div className="tilediv1">
@@ -37,7 +37,7 @@ const Tile = ({ id, title, image, username, like, moveTile }) => {
             style={{ color: "white" }}
           />
           <div className="tilediv3">
-            <h3 className="descH3">{title}</h3>
+            <h3 className="descH3 font-Inter">{title}</h3>
           </div>
         </div>
         <div className={"tileSec"}>
